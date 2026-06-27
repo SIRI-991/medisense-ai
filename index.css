@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ink-50 text-ink-800 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  .dark body {
+    @apply bg-ink-950 text-ink-100;
+  }
+
+  ::selection {
+    @apply bg-primary-200 text-primary-900;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-300 rounded-full;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-400;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-ink-700;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60;
+  }
+  .dark .glass {
+    @apply bg-ink-900/60 border-ink-700/60;
+  }
+
+  .glass-strong {
+    @apply bg-white/85 backdrop-blur-xl border border-white/80;
+  }
+  .dark .glass-strong {
+    @apply bg-ink-900/80 border-ink-700/70;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl border border-ink-200/70 shadow-soft;
+  }
+  .dark .card {
+    @apply bg-ink-900 border-ink-700/70;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-card hover:-translate-y-0.5;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 shadow-sm hover:shadow-md;
+  }
+  .btn-success {
+    @apply btn bg-success-600 text-white hover:bg-success-700 active:bg-success-800 shadow-sm;
+  }
+  .btn-danger {
+    @apply btn bg-danger-600 text-white hover:bg-danger-700 active:bg-danger-800 shadow-sm;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-700 hover:bg-ink-100;
+  }
+  .dark .btn-ghost {
+    @apply text-ink-200 hover:bg-ink-800;
+  }
+  .btn-outline {
+    @apply btn bg-white text-primary-700 border border-primary-200 hover:bg-primary-50 hover:border-primary-300;
+  }
+  .dark .btn-outline {
+    @apply bg-ink-900 text-primary-300 border-ink-700 hover:bg-ink-800;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-800 placeholder-ink-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20;
+  }
+  .dark .input {
+    @apply bg-ink-900 border-ink-700 text-ink-100 placeholder-ink-500;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-ink-200/70 rounded-md;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 100%
+    );
+    background-size: 1000px 100%;
+    @apply animate-shimmer;
+  }
+  .dark .skeleton {
+    @apply bg-ink-800;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-aurora {
+    background:
+      radial-gradient(60% 50% at 15% 10%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
+      radial-gradient(50% 40% at 90% 20%, rgba(22, 163, 74, 0.14) 0%, transparent 60%),
+      radial-gradient(60% 50% at 50% 100%, rgba(96, 165, 250, 0.18) 0%, transparent 60%);
+  }
+  .dark .bg-aurora {
+    background:
+      radial-gradient(60% 50% at 15% 10%, rgba(37, 99, 235, 0.22) 0%, transparent 60%),
+      radial-gradient(50% 40% at 90% 20%, rgba(22, 163, 74, 0.16) 0%, transparent 60%),
+      radial-gradient(60% 50% at 50% 100%, rgba(96, 165, 250, 0.16) 0%, transparent 60%);
+  }
+  .bg-grid {
+    background-image: var(--tw-bg-grid, none);
+    background-size: 32px 32px;
+  }
+}
